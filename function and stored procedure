@@ -1,0 +1,22 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `kerkostudent`(in id int)
+BEGIN
+    select LexuesiID,CONCAT(emri,' ', mbiemri)as 'student name' from lexuesi where LexuesiID=id;
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mosha`()
+BEGIN
+  select timestampdiff(YEAR,datelindja,now()) AS datelindja from lexuesi;
+  
+END
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `renditjanumritfaqev`()
+BEGIN
+	select *from libri order by numrifaqeve;
+
+END
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `titullilibres`(emri varchar(100)) RETURNS varchar(100) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+	return concat(emri);
+END
